@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import functions from "firebase-functions";
 import express from "express";
 import cors from "cors";
 import { questionRouter } from "./question.route.js";
@@ -9,6 +9,8 @@ app.use(cors());
 
 app.use(questionRouter);
 
-app.listen(3030, () => {
-  console.log("Listening on PORT: 3030");
-});
+// app.listen(3030, () => {
+//   console.log("Listening on PORT: 3030");
+// });
+
+export const api = functions.https.onRequest(app);
